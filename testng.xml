@@ -2,8 +2,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" verbose="2" name="Parallel Test Suite" annotations="JDK" parallel="classes">
     <test name="login">
+        <groups>
+            <define name="login-prerequisites">
+                <include name="addemployee.AddEmployeeTest.addEmployeeWithLoginCredentials"/>
+            </define>
+        </groups>
         <classes>
             <class name="login.LoginTest"/>
+            <class name="addemployee.AddEmployeeTest"/>
+            <class name="removeemployee.RemoveEmployeeTest"/>
         </classes>
     </test>
 

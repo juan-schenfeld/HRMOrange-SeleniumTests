@@ -8,13 +8,10 @@ public class LoginPage extends PageBase{
 
     @FindBy(id = "txtUsername")
     private WebElement usernameField;
-
     @FindBy(id = "txtPassword")
     private WebElement passwordField;
-
     @FindBy(id = "btnLogin")
     private WebElement submitButton;
-
     @FindBy(id = "spanMessage")
     private WebElement failedLoginMessage;
 
@@ -23,14 +20,17 @@ public class LoginPage extends PageBase{
     }
 
 
-    public void login(String username, String password){
+    public LoginPage login(String username, String password){
         waitAndSendKeys(usernameField, 3, username);
         waitAndSendKeys(passwordField, 3, password);
         waitAndClick(submitButton, 3);
+
+        return this;
     }
 
-    public void loginWithDefaultAdminCredentials(){
+    public DashboardPage loginWithDefaultAdminCredentials(){
         login("Admin", "admin123");
+        return getDashboardPage();
     }
 
     public String getFailedLoginMessageText(){
@@ -40,6 +40,13 @@ public class LoginPage extends PageBase{
     public String loginWithWrongCredentials(String username, String password){
         login(username, password);
         return getFailedLoginMessageText();
+    }
+
+    public boolean isLoggedIn(){
+        return invisibilityOf(submitButton, 5);
+    }
+    public DashboardPage getDashboardPage(){
+        return new DashboardPage(driver);
     }
 
 
