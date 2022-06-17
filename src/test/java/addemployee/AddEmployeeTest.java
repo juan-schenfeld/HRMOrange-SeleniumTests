@@ -10,7 +10,7 @@ import static org.testng.Assert.assertTrue;
 public class AddEmployeeTest extends BaseTest {
 
     @Test(groups = {"AddEmployeeTest.login-prerequisites"})
-    public void addEmployeeWithLoginCredentials(){
+    public void addEmployeeWithLoginCredentials() {
         AddEmployeeData employeeData = new AddEmployeeDataBuilder()
                 .firstname("fede")
                 .lastname("lopez")

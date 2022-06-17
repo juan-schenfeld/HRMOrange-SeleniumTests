@@ -19,21 +19,16 @@ import utils.Reporter;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 import java.util.TimeZone;
 
 
 public class BaseTest {
 
-    protected LoginPage loginPage;
-
     private static String browser;
     private static String environment;
+    protected LoginPage loginPage;
     private WebDriver driver;
     private WebDriver originalDriver;
     private Reporter reporter;
@@ -81,7 +76,6 @@ public class BaseTest {
             var screenshot = camera.getScreenshotAs(OutputType.FILE);
             try {
                 Files.move(screenshot, new File("./screenshots/" + method.getName() + ".png"));
-                System.out.println("/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n/n" + screenshot.getPath());
             } catch (IOException e) {
                 extentTest.fail(e.getMessage());
             }
@@ -112,7 +106,7 @@ public class BaseTest {
         }
     }
 
-    public String getCurrentDateUTC(){
+    public String getCurrentDateUTC() {
         SimpleDateFormat timeFormatter = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
         timeFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         return timeFormatter.format(new Date());

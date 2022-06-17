@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class EmployeeListPage extends AuthenticatedPage{
+public class EmployeeListPage extends AuthenticatedPage {
 
     @FindBy(id = "empsearch_employee_name_empName")
     private WebElement employeeNameField;
@@ -24,37 +24,37 @@ public class EmployeeListPage extends AuthenticatedPage{
         super(driver);
     }
 
-    public EmployeeListPage fillEmployeeName(String name){
+    public EmployeeListPage fillEmployeeName(String name) {
         waitAndSendKeys(employeeNameField, 4, name);
         return this;
     }
 
-    public EmployeeListPage fillId(String id){
+    public EmployeeListPage fillId(String id) {
         waitAndSendKeys(idField, 4, id);
         return this;
     }
 
-    public EmployeeListPage clickSearch(){
+    public EmployeeListPage clickSearch() {
         click(searchButton);
         return this;
     }
 
-    public EmployeeListPage selectEmployee(int index){
-        waitAndClick(By.xpath("//*[@id=\"resultTable\"]/tbody/tr["+ index +"]/td/input"), 3);
+    public EmployeeListPage selectEmployee(int index) {
+        waitAndClick(By.xpath("//*[@id=\"resultTable\"]/tbody/tr[" + index + "]/td/input"), 3);
         return this;
     }
 
-    public EmployeeListPage clickDelete(){
+    public EmployeeListPage clickDelete() {
         waitAndClick(deleteButton, 5);
         return this;
     }
 
-    public EmployeeListPage confirmDelete(){
+    public EmployeeListPage confirmDelete() {
         waitAndClick(confirmDeleteButton, 5);
         return this;
     }
 
-    public boolean verifyCorrectDelete(){
+    public boolean verifyCorrectDelete() {
         return waitAndGetText(correctDeleteMessage, 2).equals("Successfully Deleted");
     }
 
